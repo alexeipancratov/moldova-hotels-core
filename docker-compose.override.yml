@@ -12,3 +12,15 @@ services:
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+  mhotelscore.bookingservice:
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+    ports:
+      - "5001:81"
+
+  mhotelscore.searchservice:
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+    ports:
+      - "5002:82"

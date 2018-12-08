@@ -6,38 +6,24 @@ services:
     build:
       context: ./MoldovaHotelsCore.GlobalWebSite
       dockerfile: Dockerfile
-    ports:
-      - "5000:80"
-      - "44314:443"
     networks:
       - mhotelscore-network
-    environment:
-      ASPNETCORE_HTTPS_PORT: "44314"
-      ASPNETCORE_ENVIRONMENT: "Development"
   
   mhotelscore.bookingservice:
     image: ${DOCKER_REGISTRY-}mhotelscorebookingservice
     build:
       context: ./MoldovaHotelsCore.BookingService
       dockerfile: Dockerfile
-    ports:
-      - "5001:81"
     networks:
       - mhotelscore-network
-    environment:
-      ASPNETCORE_ENVIRONMENT: "Development"
 
   mhotelscore.searchservice:
     image: ${DOCKER_REGISTRY-}mhotelscoresearchservice
     build:
       context: ./MoldovaHotelsCore.SearchService
       dockerfile: Dockerfile
-    ports:
-      - "5002:82"
     networks:
       - mhotelscore-network
-    environment:
-      ASPNETCORE_ENVIRONMENT: "Development"
   
   mhotelscore.msssql:
     image: mcr.microsoft.com/mssql/server
