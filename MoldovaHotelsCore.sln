@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoldovaHotelsCore.GlobalWebSite", "MoldovaHotelsCore.GlobalWebSite\MoldovaHotelsCore.GlobalWebSite.csproj", "{4D792DD7-7DA9-43BD-8B69-646A2C2AF164}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{4B75512E-A77D-4D21-B4E1-9D6BE33BDFDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoldovaHotelsCore.BookingService", "MoldovaHotelsCore.BookingService\MoldovaHotelsCore.BookingService.csproj", "{F7FCC150-2301-429A-8F73-9D77352B4CB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoldovaHotelsCore.SearchService", "MoldovaHotelsCore.SearchService\MoldovaHotelsCore.SearchService.csproj", "{AED8218D-A401-4A38-A0F1-AABE3BA829CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD892C01-BBED-429E-9706-366A4A9D8C6A}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D792DD7-7DA9-43BD-8B69-646A2C2AF164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D792DD7-7DA9-43BD-8B69-646A2C2AF164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D792DD7-7DA9-43BD-8B69-646A2C2AF164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D792DD7-7DA9-43BD-8B69-646A2C2AF164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7FCC150-2301-429A-8F73-9D77352B4CB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7FCC150-2301-429A-8F73-9D77352B4CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7FCC150-2301-429A-8F73-9D77352B4CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7FCC150-2301-429A-8F73-9D77352B4CB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AED8218D-A401-4A38-A0F1-AABE3BA829CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED8218D-A401-4A38-A0F1-AABE3BA829CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED8218D-A401-4A38-A0F1-AABE3BA829CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED8218D-A401-4A38-A0F1-AABE3BA829CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F7FCC150-2301-429A-8F73-9D77352B4CB9} = {4B75512E-A77D-4D21-B4E1-9D6BE33BDFDE}
+		{AED8218D-A401-4A38-A0F1-AABE3BA829CE} = {4B75512E-A77D-4D21-B4E1-9D6BE33BDFDE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D180CD7-1FD2-41C3-B86B-795B1FCEA907}
+	EndGlobalSection
+EndGlobal
