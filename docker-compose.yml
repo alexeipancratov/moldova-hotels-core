@@ -1,7 +1,8 @@
-﻿version: '2'
+version: '3.4'
 
 services:
-  mhotels:
+  mhotelscore.globalwebsite:
+    image: ${DOCKER_REGISTRY-}mhotelscoreglobalwebsite
     build:
       context: ./MoldovaHotelsCore.GlobalWebSite
       dockerfile: Dockerfile
@@ -14,7 +15,8 @@ services:
       ASPNETCORE_HTTPS_PORT: "44314"
       ASPNETCORE_ENVIRONMENT: "Development"
   
-  bookingservice:
+  mhotelscore.bookingservice:
+    image: ${DOCKER_REGISTRY-}mhotelscorebookingservice
     build:
       context: ./MoldovaHotelsCore.BookingService
       dockerfile: Dockerfile
@@ -25,7 +27,8 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
 
-  searchservice:
+  mhotelscore.searchservice:
+    image: ${DOCKER_REGISTRY-}mhotelscoresearchservice
     build:
       context: ./MoldovaHotelsCore.SearchService
       dockerfile: Dockerfile
@@ -36,7 +39,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
   
-  msssql:
+  mhotelscore.msssql:
     image: mcr.microsoft.com/mssql/server
     networks:
       - mhotelscore-network

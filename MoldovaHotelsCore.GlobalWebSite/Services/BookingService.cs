@@ -16,7 +16,7 @@ namespace MoldovaHotelsCore.GlobalWebSite.Services
 
         public async Task<decimal> CalculatePriceAsync(decimal baseRoomPrice, int numberOfAdults, int numberOfChildren)
         {
-            Uri uri = new Uri($"http://bookingservice:81/api/bookings/price?baseRoomPrice={baseRoomPrice}&numberOfAdults={numberOfAdults}&numberOfChildren={numberOfChildren}");
+            Uri uri = new Uri($"http://mhotelscore.bookingservice:81/api/bookings/price?baseRoomPrice={baseRoomPrice}&numberOfAdults={numberOfAdults}&numberOfChildren={numberOfChildren}");
             HttpResponseMessage responseMessage = await httpClient.GetAsync(uri);
 
             return await responseMessage.Content.ReadAsAsync<decimal>();
