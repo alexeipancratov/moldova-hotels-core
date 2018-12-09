@@ -38,7 +38,20 @@ namespace MoldovaHotelsCore.BookingService.Engines
 
         public Task<Booking> MakeBookingAsync(string userId, Booking booking, CreditCardInformation creditCardInformation)
         {
-            return Task.FromResult(new Booking());
+            var createdBooking = new Booking
+            {
+                BookingId = 54535,
+                CheckIn = booking.CheckIn,
+                CheckOut = booking.CheckOut,
+                EmailAddress = booking.EmailAddress,
+                FirstName = booking.FirstName,
+                LastName = booking.LastName,
+                RoomId = booking.RoomId,
+                TelephoneNumber = booking.TelephoneNumber,
+                TotalPrice = booking.TotalPrice
+            };
+
+            return Task.FromResult(createdBooking);
         }
 
         public Task UpdateBooking(EditBookingModel editBookingModel)

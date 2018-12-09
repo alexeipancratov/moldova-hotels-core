@@ -8,7 +8,7 @@ namespace MoldovaHotelsCore.SearchService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class HotelsController : ControllerBase
     {
         // GET api/values
         [HttpGet]

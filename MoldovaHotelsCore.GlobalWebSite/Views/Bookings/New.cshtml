@@ -1,0 +1,90 @@
+﻿@model MoldovaHotelsCore.GlobalWebSite.ViewModels.NewBookingViewModel
+
+@{
+    ViewData["Title"] = "New Booking";
+}
+
+<h2>New Booking</h2>
+
+<div class="row">
+    <h2 class="col-md-12">New Booking</h2>
+    <hr />
+
+    <div class="col-sm-5 col-sm-pull-7 col-md-4">
+        <form action="@Url.Action("Make", "Bookings")" method="POST">
+            <input type="hidden" value="@Model.CheckIn" id="CheckIn" name="CheckIn" />
+            <input type="hidden" value="@Model.CheckOut" id="CheckOut" name="CheckOut" />
+            @Html.HiddenFor(m => m.RoomId)
+
+            <hr />
+            <h4>Person responsible for booking</h4>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CardType)
+                @Html.DropDownListFor(m => m.CardType, new SelectList(Enum.GetNames(typeof(CardType))), new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CardNumber)
+                @Html.TextBoxFor(m => m.CardNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CardNumber)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.SecurityCode)
+                @Html.TextBoxFor(m => m.SecurityCode, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.SecurityCode)
+            </div>
+            <div class="form-group">
+                <label>Expiry Date</label>
+                <br />
+                <select id="ExpiryMonth" name="ExpiryMonth" class="form-control">
+                    <option>Select month</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
+                <select id="ExpiryYear" name="ExpiryYear" class="form-control">
+                    <option>Select year</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    <option>2022</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+                </select>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.EmailAddress)
+                @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.EmailAddress)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.TelephoneNumber)
+                @Html.TextBoxFor(m => m.TelephoneNumber, new { @class = "form-control", type = "tel" })
+                @Html.ValidationMessageFor(m => m.TelephoneNumber)
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

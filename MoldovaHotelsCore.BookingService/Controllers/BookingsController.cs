@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MoldovaHotelsCore.BookingService.Engines.Interfaces;
-using MoldovaHotelsCore.BookingService.ExternalModels;
+using MoldovaHotelsCore.BookingService.InteractionModels;
 using MoldovaHotelsCore.BookingService.Models;
 
 namespace MoldovaHotelsCore.BookingService.Controllers
@@ -19,7 +19,7 @@ namespace MoldovaHotelsCore.BookingService.Controllers
 
         // POST api/bookings
         [HttpPost]
-        public async Task<ActionResult<Booking>> Post(CreateBookingViewModel viewModel)
+        public async Task<ActionResult<Booking>> Post(CreateBookingInteractionModel viewModel)
         {
             return await bookingEngine.MakeBookingAsync(viewModel.UserId, viewModel.Booking, viewModel.CreditCardInformation);
         }

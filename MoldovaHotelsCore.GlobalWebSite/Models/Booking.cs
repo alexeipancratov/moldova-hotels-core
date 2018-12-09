@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MoldovaHotelsCore.BookingService.Models
+namespace MoldovaHotelsCore.GlobalWebSite.Models
 {
     public class Booking
     {
@@ -17,8 +17,6 @@ namespace MoldovaHotelsCore.BookingService.Models
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
-        public CreditCardInformation CreditCardInformation { get; set; }
 
         public string EmailAddress { get; set; }
 

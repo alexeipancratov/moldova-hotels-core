@@ -1,8 +1,8 @@
 ﻿using MoldovaHotelsCore.BookingService.Models;
 
-namespace MoldovaHotelsCore.BookingService.ExternalModels
+namespace MoldovaHotelsCore.BookingService.InteractionModels
 {
-    public class CreateBookingViewModel
+    public class CreateBookingInteractionModel
     {
         public string UserId { get; set; }
 
