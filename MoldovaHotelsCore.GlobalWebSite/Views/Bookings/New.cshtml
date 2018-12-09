@@ -4,13 +4,11 @@
     ViewData["Title"] = "New Booking";
 }
 
-<h2>New Booking</h2>
-
 <div class="row">
     <h2 class="col-md-12">New Booking</h2>
     <hr />
 
-    <div class="col-sm-5 col-sm-pull-7 col-md-4">
+    <div class="col-sm-5 col-md-4">
         <form action="@Url.Action("Make", "Bookings")" method="POST">
             <input type="hidden" value="@Model.CheckIn" id="CheckIn" name="CheckIn" />
             <input type="hidden" value="@Model.CheckOut" id="CheckOut" name="CheckOut" />
@@ -60,6 +58,7 @@
                     <option>11</option>
                     <option>12</option>
                 </select>
+                <br />
                 <select id="ExpiryYear" name="ExpiryYear" class="form-control">
                     <option>Select year</option>
                     <option>2018</option>

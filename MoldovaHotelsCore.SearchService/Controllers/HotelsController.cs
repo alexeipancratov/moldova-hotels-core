@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using MoldovaHotelsCore.SearchService.Engines.Interfaces;
+using MoldovaHotelsCore.SearchService.Models;
 
 namespace MoldovaHotelsCore.SearchService.Controllers
 {
@@ -10,36 +9,25 @@ namespace MoldovaHotelsCore.SearchService.Controllers
     [ApiController]
     public class HotelsController : ControllerBase
     {
-        // GET api/values
+        private readonly IHotelEngine hotelEngine;
+
+        public HotelsController(IHotelEngine hotelEngine)
+        {
+            this.hotelEngine = hotelEngine;
+        }
+
+        // GET api/hotels
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Hotel>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new JsonResult(hotelEngine.GetHotels());
         }
 
-        // GET api/values/5
+        // GET api/hotels/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Hotel> Get(int id)
         {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return hotelEngine.GetHotel(id);
         }
     }
 }

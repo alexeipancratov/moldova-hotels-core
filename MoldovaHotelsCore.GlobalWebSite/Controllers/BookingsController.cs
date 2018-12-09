@@ -26,7 +26,12 @@ namespace MoldovaHotelsCore.GlobalWebSite.Controllers
 
         public IActionResult New(int roomId)
         {
-            return View();
+            NewBookingViewModel model = new NewBookingViewModel
+            {
+                RoomId = roomId
+            };
+
+            return View(model);
         }
 
         [HttpPost]

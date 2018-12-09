@@ -1,0 +1,114 @@
+﻿@model System.Collections.Generic.IEnumerable<MoldovaHotelsCore.GlobalWebSite.Models.Hotel>
+
+@{
+    ViewData["Title"] = "Hotels";
+}
+
+<h2>Hotels</h2>
+
+<div class="row">
+    <aside id="filter-panel-desktop" class="search-options col-sm-2">
+        <form action="@Url.Action("Index", "Hotels")" method="GET">
+            <input type="hidden" name="searchTerm" value="@ViewBag.SearchTerm" />
+            <p class="searchOptionLabel">
+                <b>Title order:</b>
+            </p>
+            <label>
+                <input type="radio" name="titleOrder" value="asc" checked="@(!String.IsNullOrEmpty(ViewBag.TitleOrder) && ViewBag.TitleOrder == "asc")" />
+                <span class="glyphicon glyphicon-sort-by-alphabet searchOptionIcon"></span>
+            </label>
+            <br />
+            <label>
+                <input type="radio" name="titleOrder" value="desc" checked="@(!String.IsNullOrEmpty(ViewBag.TitleOrder) && ViewBag.TitleOrder == "desc")" />
+                <span class="glyphicon glyphicon-sort-by-alphabet-alt searchOptionIcon"></span>
+            </label>
+            <br />
+            <br />
+            <p class="searchOptionLabel">
+                <b>Price order:</b>
+            </p>
+            <label>
+                <input type="radio" name="priceOrder" value="asc" checked="@(!String.IsNullOrEmpty(ViewBag.PriceOrder) && ViewBag.PriceOrder == "asc")" />
+                <span class="glyphicon glyphicon-sort-by-attributes searchOptionIcon"></span>
+            </label>
+            <br />
+            <label>
+                <input type="radio" name="priceOrder" value="desc" checked="@(!String.IsNullOrEmpty(ViewBag.PriceOrder) && ViewBag.PriceOrder == "desc")" />
+                <span class="glyphicon glyphicon-sort-by-attributes-alt searchOptionIcon"></span>
+            </label>
+            <br />
+            <label>
+                <input type="radio" name="priceOrder" value="any" checked="@(String.IsNullOrEmpty(ViewBag.PriceOrder) || ViewBag.PriceOrder == "any")" />
+                Any
+            </label>
+            <br />
+            <br />
+            <p class="searchOptionLabel">
+                <b>Hotel class:</b>
+            </p>
+            <label>
+                <input type="radio" name="hotelClass" value="5" checked="@(ViewBag.HotelClass != null && ViewBag.HotelClass == 5)" />
+                <div class="hotelClassStars inlineRating" data-size="sm" data-hotel-class="5"></div>
+            </label>
+            <br />
+            <label>
+                <input type="radio" name="hotelClass" value="4" checked="@(ViewBag.HotelClass != null && ViewBag.HotelClass == 4)" />
+                <div class="hotelClassStars inlineRating" data-size="sm" data-hotel-class="4"></div>
+            </label>
+            <br />
+            <label>
+                <input type="radio" name="hotelClass" value="3" checked="@(ViewBag.HotelClass != null && ViewBag.HotelClass == 3)" />
+                <div class="hotelClassStars inlineRating" data-size="sm" data-hotel-class="3"></div>
+            </label>
+            <br />
+            <label>
+                <input type="radio" name="hotelClass" value="2" checked="@(ViewBag.HotelClass != null && ViewBag.HotelClass == 2)" />
+                <div class="hotelClassStars inlineRating" data-size="sm" data-hotel-class="2"></div>
+            </label>
+            <br />
+            <label>
+                <input type="radio" name="hotelClass" value="1" checked="@(ViewBag.HotelClass != null && ViewBag.HotelClass == 1)" />
+                <div class="hotelClassStars inlineRating" data-size="sm" data-hotel-class="1"></div>
+            </label>
+            <br />
+            <label>
+                <input type="radio" name="hotelClass" value="0" checked="@(ViewBag.HotelClass == null || ViewBag.HotelClass == 0)" />
+                Any
+            </label>
+            <br />
+            <br />
+            <button type="submit" class="btn btn-info">Update results</button>
+        </form>
+    </aside>
+    <div class="col-sm-10">
+        @foreach (var hotel in Model)
+        {
+            <div class="hotel-info panel panel-default">
+                <div class="panel-body">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="@Url.Action("Show", "Hotels", new {id = hotel.HotelId})">
+                                <img class="media-object" width="150" src="https://www.freeiconspng.com/uploads/hotel-png-4.png" alt="no image" />
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading hotel-name">
+                                <a class="hotel-link" href="@Url.Action("Show", "Hotels", new {id = hotel.HotelId})">@hotel.Name</a>
+                            </h4>
+                            <div class="hotelClassStars" data-size="sm" data-hotel-class="@hotel.Class"></div>
+                            <p class="address"><strong>Address: </strong>@hotel.Address</p>
+                            <div class="row hotel-more-details">
+                                <div class="col-xs-6 button-part">
+                                    <a href="@Url.Action("Show", "Hotels", new {id = hotel.HotelId})" class="btn btn-sm btn-success">More details...</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media-right">
+                            <span style="font-size: x-large">$@hotel.CheapestRoomPrice</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
