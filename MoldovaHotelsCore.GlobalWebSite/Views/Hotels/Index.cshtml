@@ -81,6 +81,10 @@
         </form>
     </aside>
     <div class="col-sm-10">
+        @if (!Model.Any())
+        {
+            <p>Sorry, nothing found... Please check later.</p>
+        }
         @foreach (var hotel in Model)
         {
             <div class="hotel-info panel panel-default">
