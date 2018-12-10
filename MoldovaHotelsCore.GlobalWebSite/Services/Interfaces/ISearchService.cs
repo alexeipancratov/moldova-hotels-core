@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace MoldovaHotelsCore.GlobalWebSite.Services.Interfaces
 {
-    public interface IHotelService
+    public interface ISearchService
     {
         Task<IEnumerable<Hotel>> GetHotelsAsync();
 

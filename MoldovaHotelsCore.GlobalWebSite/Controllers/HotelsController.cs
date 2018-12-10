@@ -9,9 +9,9 @@ namespace MoldovaHotelsCore.GlobalWebSite.Controllers
 {
     public class HotelsController : Controller
     {
-        private readonly IHotelService hotelService;
+        private readonly ISearchService hotelService;
 
-        public HotelsController(IHotelService hotelService)
+        public HotelsController(ISearchService hotelService)
         {
             this.hotelService = hotelService;
         }

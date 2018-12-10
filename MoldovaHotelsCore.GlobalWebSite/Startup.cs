@@ -43,11 +43,17 @@ namespace MoldovaHotelsCore.GlobalWebSite
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddHttpClient<IBookingService, BookingService>((c) => c.BaseAddress = new Uri(Configuration.GetSection("Microservices")["BookingService"]))
+            services.AddHttpClient<IBookingService, BookingService>((c) =>
+                {
+                    c.BaseAddress = new Uri(Configuration.GetSection("Microservices")["BookingService"]);
+                })
                 .SetHandlerLifetime(TimeSpan.FromMinutes(5))
                 .AddPolicyHandler(GetRetryPolicy());
 
-            services.AddHttpClient<IHotelService, HotelService>((c) => c.BaseAddress = new Uri(Configuration.GetSection("Microservices")["SearchService"]))
+            services.AddHttpClient<ISearchService, SearchService>((c) =>
+                {
+                    c.BaseAddress = new Uri(Configuration.GetSection("Microservices")["SearchService"]);
+                })
                 .SetHandlerLifetime(TimeSpan.FromMinutes(5))
                 .AddPolicyHandler(GetRetryPolicy());
         }
