@@ -29,7 +29,8 @@ namespace MoldovaHotelsCore.GlobalWebSite.Services
         public async Task<Booking> MakeBookingAsync(CreateBookingInteractionModel booking)
         {
             HttpResponseMessage responseMessage = await httpClient.PostAsync(
-                "/api/bookings", booking,new JsonMediaTypeFormatter(), null);
+                "/api/bookings", booking, new JsonMediaTypeFormatter(), null);
+            responseMessage.EnsureSuccessStatusCode();
 
             return await responseMessage.Content.ReadAsAsync<Booking>();
         }

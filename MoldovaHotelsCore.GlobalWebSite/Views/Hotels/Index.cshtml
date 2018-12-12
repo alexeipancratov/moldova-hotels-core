@@ -81,38 +81,45 @@
         </form>
     </aside>
     <div class="col-sm-10">
-        @if (!Model.Any())
+        @if (ViewBag.TooManyUsers == true)
         {
-            <p>Sorry, nothing found... Please check later.</p>
+            <p>Please try again later. Too many users are making requests involving search of hotels.</p>
         }
-        @foreach (var hotel in Model)
+        else
         {
-            <div class="hotel-info panel panel-default">
-                <div class="panel-body">
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="@Url.Action("Show", "Hotels", new {id = hotel.HotelId})">
-                                <img class="media-object" width="150" src="https://www.freeiconspng.com/uploads/hotel-png-4.png" alt="no image" />
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading hotel-name">
-                                <a class="hotel-link" href="@Url.Action("Show", "Hotels", new {id = hotel.HotelId})">@hotel.Name</a>
-                            </h4>
-                            <div class="hotelClassStars" data-size="sm" data-hotel-class="@hotel.Class"></div>
-                            <p class="address"><strong>Address: </strong>@hotel.Address</p>
-                            <div class="row hotel-more-details">
-                                <div class="col-xs-6 button-part">
-                                    <a href="@Url.Action("Show", "Hotels", new {id = hotel.HotelId})" class="btn btn-sm btn-success">More details...</a>
+            @if (!Model.Any())
+            {
+                <p>Sorry, nothing found... Please check later.</p>
+            }
+            @foreach (var hotel in Model)
+            {
+                <div class="hotel-info panel panel-default">
+                    <div class="panel-body">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="@Url.Action("Show", "Hotels", new {id = hotel.HotelId})">
+                                    <img class="media-object" width="150" src="https://www.freeiconspng.com/uploads/hotel-png-4.png" alt="no image" />
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading hotel-name">
+                                    <a class="hotel-link" href="@Url.Action("Show", "Hotels", new {id = hotel.HotelId})">@hotel.Name</a>
+                                </h4>
+                                <div class="hotelClassStars" data-size="sm" data-hotel-class="@hotel.Class"></div>
+                                <p class="address"><strong>Address: </strong>@hotel.Address</p>
+                                <div class="row hotel-more-details">
+                                    <div class="col-xs-6 button-part">
+                                        <a href="@Url.Action("Show", "Hotels", new {id = hotel.HotelId})" class="btn btn-sm btn-success">More details...</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="media-right">
-                            <span style="font-size: x-large">$@hotel.CheapestRoomPrice</span>
+                            <div class="media-right">
+                                <span style="font-size: x-large">$@hotel.CheapestRoomPrice</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         }
     </div>
 </div>

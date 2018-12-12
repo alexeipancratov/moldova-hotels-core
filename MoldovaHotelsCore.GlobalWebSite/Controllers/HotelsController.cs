@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MoldovaHotelsCore.GlobalWebSite.Models;
 using MoldovaHotelsCore.GlobalWebSite.Services.Interfaces;
+using Polly.Bulkhead;
+using Polly.Timeout;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -18,15 +20,23 @@ namespace MoldovaHotelsCore.GlobalWebSite.Controllers
 
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Hotel> hotels;
+            IEnumerable<Hotel> hotels = new List<Hotel>();
 
             try
             {
                 hotels = await hotelService.GetHotelsAsync();
             }
+            catch (TimeoutRejectedException)
+            {
+                ViewBag.ServiceUnavailable = true;
+            }
+            catch (BulkheadRejectedException)
+            {
+                ViewBag.TooManyUsers = true;
+            }
             catch (Exception)
             {
-                hotels = new List<Hotel>();
+                ViewBag.ServiceUnavailable = true;
             }
 
             return View(hotels);

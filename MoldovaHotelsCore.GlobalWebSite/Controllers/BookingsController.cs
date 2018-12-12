@@ -63,9 +63,16 @@ namespace MoldovaHotelsCore.GlobalWebSite.Controllers
                 UserId = Guid.NewGuid().ToString()
             };
 
-            Booking madeBooking = await bookingService.MakeBookingAsync(makeBooking);
+            try
+            {
+                Booking madeBooking = await bookingService.MakeBookingAsync(makeBooking);
 
-            return View(madeBooking);
+                return View(madeBooking);
+            }
+            catch (Exception)
+            {
+                return View("Error", new ErrorViewModel());
+            }
         }
     }
 }

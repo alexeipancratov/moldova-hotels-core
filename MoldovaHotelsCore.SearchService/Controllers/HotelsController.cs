@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoldovaHotelsCore.SearchService.Engines.Interfaces;
 using MoldovaHotelsCore.SearchService.Models;
