@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MoldovaHotelsCore.GlobalWebSite.Data;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +12,7 @@ using MoldovaHotelsCore.GlobalWebSite.Services;
 using Polly;
 using System.Net.Http;
 using Polly.Extensions.Http;
+using Microsoft.Extensions.Hosting;
 
 namespace MoldovaHotelsCore.GlobalWebSite
 {
@@ -38,10 +38,13 @@ namespace MoldovaHotelsCore.GlobalWebSite
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
+            services.AddControllersWithViews();
 
             services.AddHttpClient<IBookingService, BookingService>((c) =>
                 {
@@ -67,12 +70,11 @@ namespace MoldovaHotelsCore.GlobalWebSite
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -86,11 +88,15 @@ namespace MoldovaHotelsCore.GlobalWebSite
 
             app.UseAuthentication();
 
-            app.UseMvc(routes =>
+            app.UseRouting();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
