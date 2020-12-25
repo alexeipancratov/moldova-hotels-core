@@ -24,16 +24,6 @@ services:
       dockerfile: Dockerfile
     networks:
       - mhotelscore-network
-  
-  mhotelscore.msssql:
-    image: mcr.microsoft.com/mssql/server
-    networks:
-      - mhotelscore-network
-    environment:
-      SA_PASSWORD: "Serv1234*"
-      ACCEPT_EULA: "Y"
-    ports:
-      - "1433:1433"
 
 networks:
   mhotelscore-network:

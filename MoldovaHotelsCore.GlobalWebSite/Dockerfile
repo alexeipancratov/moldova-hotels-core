@@ -1,4 +1,4 @@
-FROM microsoft/dotnet
+FROM mcr.microsoft.com/dotnet/sdk:5.0
 
 LABEL name="Alexei Pancratov"
 
